@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Realm of temptation</title>
+<link rel="stylesheet" id="normal" href="game.css" type="text/css" media="all" /> 
+
+</head>
+
+<body>
+
+    <div id="rouletteImage" class="container_row">
+        <canvas id="chip" class="layer2"></canvas>
+        <img id="rouletteImg" src="asset/img/roulettetable.jpg" class="layer1">
+    </div>
+
+    <div id="betArea">
+        <p>
+            Black<input type="checkbox" id="betBlack" onchange="makeBet(this)">
+            Red<input type="checkbox" id="betRed" onchange="makeBet(this)"><br>
+        </p>
+        
+        <p>
+            Odd<input type="checkbox" id="betOdd" onchange="makeBet(this)">
+            Even<input type="checkbox" id="betEven" onchange="makeBet(this)"><br>
+        </p>
+        
+        <p>
+            1-18<input type="checkbox" id="betFirstHalf" onchange="makeBet(this)">
+            19-36<input type="checkbox" id="betSecondHalf" onchange="makeBet(this)">
+        </p>
+        
+        <p>
+            1-12<input type="checkbox" id="betFirstThird" onchange="makeBet(this)">
+            13-24<input type="checkbox" id="betSecondThird" onchange="makeBet(this)">
+            25-36<input type="checkbox" id="betThirdThird" onchange="makeBet(this)"><br>
+        </p>
+
+
+
+        <input type="number" id="betNumber" min="0" max="37">
+
+
+
+<!-- 
+        Red 	1 	47.37% 	5.26%
+        Black 	1 	47.37% 	5.26%
+        Odd 	1 	47.37% 	5.26%
+
+        Even 	1 	47.37% 	5.26%
+
+        1 to 18 	1 	47.37% 	5.26%
+        19 to 36 	1 	47.37% 	5.26%
+
+        1 to 12 	2 	31.58% 	5.26%
+        13 to 24 	2 	31.58% 	5.26%
+        25 to 36 	2 	31.58% 	5.26%
+
+        Six line (6 numbers) 	5 	15.79% 	5.26%
+        First five (5 numbers) 	6 	13.16% 	7.89%
+        Corner (4 numbers) 	8 	10.53% 	5.26%
+        Street (3 numbers) 	11 	7.89% 	5.26%
+        Split (2 numbers)
+-->
+
+
+
+    </div>
+
+    <button id="gen" onclick="genResult()" disabled>Generate result</button>
+    <div id="result"></div>
+
+
+<script type="text/javascript" src="utils.js" ></script>  
+<script type="text/javascript" src="game.js" ></script>  
+</body>
+</html>

@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script');
+
+:root{
+    --fontsize: 15pt;
+
+    --gameHeight :26vh;
+    --gameWidth: 29%;
+
+    --gameThumbHeight: 15vh;
+
+    --imgThumbHeight: 100%;
+
+    --gameNameMargin: 5%;
+
+    --gameRatingHeight: 2vh;
+    --gameRatingPadding: 5px;
+    --gameRatingFloat: right;
+
+    --gameListFontsize: 20pt;
+
+    --buttonsFloat: left;
+}
+   
+body{
+    margin: 0;     
+    background: #415A77;
+    overflow-y: visible;
+    overflow-x: visible;
+    height: 100%;
+}
+
+a{
+    color: #da83f0;
+    text-decoration: none;
+}
+a:hover{
+    transition: color 2s , font-size 1s;
+    font-size: 18pt;
+    color: white;
+}
+
+.canvases{
+    border: #ffffff 1px solid;
+    /* display: none; */
+}
+
+.container_row{
+  display: grid;
+}
+
+.layer1, .layer2{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.layer2{
+    z-index: 2;
+}
+
+.layer1{
+    z-index: 1;
+}
+
+
+
+
+
+
+.title{
+    width: 100%;
+    height: 4vh;
+    float: left;
+    border: #7B7B7B 1px solid;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0 0 16px 2px rgb(0 0 0 / 70%);
+    background: #2e4055;
+    padding: 5px 5px 5px 55px;
+    font-family: 'Dancing Script', cursive;
+    margin-bottom: 1%;
+    display: block;
+    user-select: none;
+}
+
+.titleText{
+    position: relative;
+    top: 10%;
+    font-size: 24pt;
+    float: left;
+}
+
+.titleButtons{
+    position: relative;
+    float: right;
+    right: 5%;
+    top: 10%;
+}
+
+.titleButton{
+    border: #000000 1px dotted;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 16px 2px rgb(0 0 0 / 40%);
+    background: #2e4055;
+    font-size: 16pt;
+    padding: 5px 5px 5px 5px;
+    font-family: 'Dancing Script', cursive;
+    transition: color 2s , font-size 1s;
+}
+.titleButton:hover{
+    transition: color 2s , font-size 1s;
+    font-size: 18pt;
+    color: white;
+
+
+}
+
+.navigationBar{
+    user-select: none;
+    display: flex;
+    background: #2e4055;
+    padding: 7px;
+    box-shadow: 0 3px 10px 1px rgb(0 0 0 / 70%);
+    border-radius: 5px;
+    margin: 1%;
+    width: 97%;
+    font-size: 16pt;
+    color: #aaaf99;
+}
+ 
+.navigationButtons{
+    float: left;
+    background: #ac0808;
+    padding: 3px;
+    border-radius: 5px;
+}
+.navigationButtons:hover{
+    color: white;
+}
+.navigationButtonsHighlight{
+    color: white;
+}
+.navigationNumberBar{
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.navigationNumbers{
+    float: left;
+    padding: 2px 5px 2px 5px;
+    border: #7B7B7B 1px dotted;
+    border-radius: 3px;
+}
+.navigationNumbers:hover{
+    color: white;
+}
+.navigationNumbersHighlight{
+    background: #162333;
+}
+
+img{
+    object-fit: cover;
+}
+
+img.imgThumb{
+
+    height: 100%;
+    width: 98%;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0px 15px 3px rgb(0 0 0 / 70%);
+    margin: 10px;
+}   
+  
+img.filterImgs{
+    width: 103px;
+    height: 22px;
+    opacity: 0.7;
+    transition: 1s opacity;
+}
+img.filterImgs:hover{
+    opacity: 1;
+    transition: 1s opacity;
+}
+img.filterImgsHighlight{
+    opacity: 1;
+}
+
+img.imgGameBoxes{
+    width: 206px;
+    height: 35px;
+}
+
+.content{
+    margin: 0 1% 0 1%;
+    font-size: 24pt;
+    width: 80%;
+}
+
+.game{
+    background: #A08C6A;
+    float: left;
+    width: var(--gameWidth);
+    height: var(--gameHeight);
+    padding: 5px 10px 10px 10px;
+    margin: 8px 8px 8px 8px;
+    border: #574C38 2px solid;
+    border-radius: 7px 7px 5px 5px;
+    box-shadow: 0 0px 15px 3px rgb(0 0 0 / 70%);
+    letter-spacing: 2px;
+}
+
+.gameThumb{
+    position: relative;
+    z-index: 1;
+    height: var(--gameThumbHeight);
+    user-select: none;
+}
+
+.gameBoxes{
+    padding: 2px;
+    display: inline-flex;
+    position: relative;
+    z-index: 2;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0 0px 10px 2px rgb(0 0 0 / 70%);
+    transition: box-shadow 1s;
+    user-select: none;
+    margin-right: 10px;
+}
+.gameBoxesTop{
+    top: -20px;
+}
+.gameBoxes:hover{
+    transition: box-shadow 1s;
+    box-shadow: 0px 0px 10px 3px rgb(0 0 0 / 100%);
+}
+
+.gameEngineRPGM{
+    background: #F26430;
+}
+.gameEngineHTML{
+    background: #009B72;
+}
+.gameEngineRenpy{
+    background: #FF82A9;
+}
+.gameEngineOther{
+    background: #FFEBE7;
+}
+
+.gameStatusWIP{
+    background: #BBCBCB;
+}
+.gameStatusCompleted{
+    background: #63adf2;
+}
+.gameStatusAbandoned{
+    background: #E5FFDE;
+}
+
+.gameName{
+    margin-bottom: var(--gameNameMargin);
+}
+
+.gameProgressCompleted{
+    background: #9f9fce;
+}
+.gameProgressLeft{
+    background: #81ae9d;
+}
+.gameProgressUnfinished{
+    background: #E0FF4F;
+}
+.gameProgressNotplayed{
+    background: #fb9f89;
+}
+.gameProgressGivenup{
+    background: #92374d;
+}
+
+.gameRating{
+    display: inline-flex;
+    height: var(--gameRatingHeight);
+    padding: var(--gameRatingPadding);
+    background: #DFD9CD;
+    float: var(--gameRatingFloat);
+}
+.gameRatingNotagain{
+    background: #92374D;
+}
+.gameRatingOkay{
+    background: #FB9F89;
+}
+.gameRatingGood{
+    background: #63ADF2;
+}
+.gameRatingReplay{
+    background: #81AE9D;
+}
+
+.result{
+    margin-top: 45px;
+}
+  
+.filters{
+    padding: 10px 10px 10px 20px;
+    margin: 5px 5px 5px 20px;
+    float: left;
+    background: #A08C6A;
+    /* height: 1100px; */
+    width: 20%;
+    border: #574C38 2px solid;
+    border-radius: 7px 7px 5px 5px;
+    box-shadow: 0 0px 15px 3px rgb(0 0 0 / 70%);
+    letter-spacing: 2px;
+    position: fixed;
+    left: 76%;
+}
+
+.search{
+    font-size: 16pt;
+}
+
+.searchInput{
+    background: #DFD9CD;
+    border: #574C38 2px solid;
+    border-radius: 7px 7px 7px 7px;
+    outline: none;
+}
+
+.addName{
+    width: 30%;
+}
+
+.addCover{
+    width: 15%;
+}
+
+.addLength{
+    width: 50%;
+}
+
+.addDesc{
+    width: 1060px;
+    height: 150px;
+}
+
+.searchButtons{
+    background: #A08C6A;
+    padding: 3px;
+    border: #574C38 2px solid;
+    border-radius: 7px 7px 7px 7px;
+    transition: 0.3s background;
+}
+.searchButtons:hover{
+    background:#706148;
+    transition: 0.3s background;  
+}  
+
+input[type="file"] {
+    display: none;
+}
+.file{
+    display: inline-flex;
+}
+
+.tagsHolder{
+    font-size: var(--fontsize);
+    margin-bottom: 10px;
+}
+
+.tags{
+    background: #A08C6A;
+    transition: 0.3s background;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+.tags:hover{
+    background:#706148;
+    transition: 0.3s background;
+}
+.tagsHighlighted{
+    background:#645640;
+}
+
+.buttons{
+    width: 100%;
+    float: var(--buttonsFloat);
+    margin: 5px 5px 5px 0px;
+}
+
+.filterButtons{
+    padding: 3px;
+    margin-right: 5px;
+    float: left;
+    border-radius: 12px 12px 12px 12px;
+    transition: 0.3s background;
+    user-select: none;
+    display: flex;
+}
+.filterButtons:hover{
+    background:#706148;
+    transition: 0.3s background;
+}
+ 
+.mainForm{
+    width: 80%;
+    padding: 10px 10px 10px 20px;
+    margin: 5px 555px 5px 20px;
+    float: left;
+    background: #A08C6A;
+    border: #574C38 2px solid;
+    border-radius: 7px 7px 5px 5px;
+    box-shadow: 0 0px 15px 3px rgb(0 0 0 / 70%);
+    letter-spacing: 2px;
+}  
+
+.gameLength{
+    font-size: var(--gameListFontsize);
+}
+
+.gameTagsList{
+    font-size: var(--gameListFontsize);
+}
+
+.gameDesc{
+    font-size: var(--gameListFontsize);
+}
+
+.gameUpdate{
+    float: right;
+    z-index: 3;
+    position: relative;
+    top: -62%;
+    background: #A08C6A;
+    border: #574C38 2px solid;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0px 15px 3px rgb(0 0 0 / 70%);
+    padding: 6px;
+    height: 5%;
+    display: inline-flex;
+}
