@@ -14,6 +14,8 @@
         <img id="rouletteImg" src="asset/img/roulettetable.jpg" class="layer1">
     </div>
 
+    <div id="money"></div>
+
     <div id="betArea">
         <p>
             Black<input type="checkbox" id="betBlack" onchange="makeBet(this)">
@@ -38,24 +40,12 @@
 
 
 
-        <input type="number" id="betNumber" min="0" max="37">
+        <input type="number" id="betNumber" min="0" max="37" onchange="makeBet(this)">
+        <input type="number" id="betAmount" min="1" max="100" onchange="makeBetAmount()">
 
 
 
 <!-- 
-        Red 	1 	47.37% 	5.26%
-        Black 	1 	47.37% 	5.26%
-        Odd 	1 	47.37% 	5.26%
-
-        Even 	1 	47.37% 	5.26%
-
-        1 to 18 	1 	47.37% 	5.26%
-        19 to 36 	1 	47.37% 	5.26%
-
-        1 to 12 	2 	31.58% 	5.26%
-        13 to 24 	2 	31.58% 	5.26%
-        25 to 36 	2 	31.58% 	5.26%
-
         Six line (6 numbers) 	5 	15.79% 	5.26%
         First five (5 numbers) 	6 	13.16% 	7.89%
         Corner (4 numbers) 	8 	10.53% 	5.26%

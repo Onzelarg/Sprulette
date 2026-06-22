@@ -6,12 +6,19 @@ let numbers = ["green",
 
 let resultDiv = document.getElementById("result"); 
 let rouletteDiv = document.getElementById("rouletteImage");
+let moneyDiv = document.getElementById("money");
 let chipCanvas = document.getElementById("chip");
 let chipCtx = chipCanvas.getContext("2d");
 
+let betNumberInput = document.getElementById("betNumber");
+let betAmountInput = document.getElementById("betAmount");
+
 let generateButton = document.getElementById("gen");
 
+let startMoney = 1000;
+
 let bet = "";
+let betAmount = 0;
 
 window.onload = (event) => {
     rouletteDiv.addEventListener("pointerdown",mousePosition);
@@ -19,8 +26,9 @@ window.onload = (event) => {
     chipCanvas.width =  rouletteImg.width;
     chipCanvas.height = rouletteImg.height;
     clearBets();
+    clearInputs();
+    moneyDiv.innerHTML = `Your current money is ${startMoney}`;
     drawChip(100,100);
-
 };
 
 function mousePosition(e){
@@ -55,6 +63,17 @@ function clearBets(){
     generateButton.disabled = true;
 }
 
+function clearInputs(){
+    betAmountInput.value = "";
+    betNumberInput.value = "";
+}
+
+function makeBetAmount(){
+    betAmount = parseInt(betAmountInput.value);
+    moneyDiv.innerHTML = `Your current money is ${startMoney} and your bet is ${betAmount}`;
+    checkForSpin();
+}
+
 function makeBet(checkBox){
     clearBets();
     checkBox.checked = true;
@@ -62,40 +81,78 @@ function makeBet(checkBox){
 
     switch(betId){
             case "betBlack" :
-                bet = "black";
+                bet = {
+                    betType : "black",
+                    payout : 1,
+                };
                 break
             case "betRed" :
-                bet = "red";
+                bet = {
+                    betType : "red",
+                    payout : 1,
+                };
                 break
             case "betOdd" :
-                bet = "odd";
+                bet = {
+                    betType : "odd",
+                    payout : 1,
+                };
                 break
             case "betEven" :
-                bet = "even";
+                bet = {
+                    betType : "even",
+                    payout : 1,
+                };
                 break
             case "betFirstHalf" :
-                bet = "fh";
+                bet = {
+                    betType : "fh",
+                    payout : 1,
+                };
                 break
             case "betSecondHalf" :
-                bet = "sh";
+                bet = {
+                    betType : "sh",
+                    payout : 1,
+                };
                 break
             case "betFirstThird" :
-                bet = "ft";
+                bet = {
+                    betType : "ft",
+                    payout : 2,
+                };
                 break
             case "betSecondThird" :
-                bet = "st";
+                bet = {
+                    betType : "st",
+                    payout : 2,
+                };
                 break
             case  "betThirdThird" :
-                bet = "tt";
+                bet = {
+                    betType : "tt",
+                    payout : 2,
+                };
                 break
+            case "betNumber" :
+                bet = {
+                    betType : "single",
+                    payout : 35,
+                    betNumber : betNumberInput.value,
+                }
     }
     console.log(bet);
-    generateButton.disabled = false;
+    checkForSpin();
+}
+
+function checkForSpin(){
+    if (bet != "" && betAmount != 0) generateButton.disabled = false;
 }
 
 
 function genResult(){
     let spin = STATIC_RNG.nextRange(0,37);
+    startMoney -= betAmount;
     let evenOdd = "green";
     let color = numbers[spin];
     let half = "green";
@@ -117,11 +174,22 @@ function genResult(){
     let result = [spin, evenOdd, color, half, third, column];
     let win = false;
 
-    for(let entry of result){
-        if (bet == entry) win = true;
-    }
+    if (bet.betType != "single"){
+        for(let entry of result){
+            if (bet.betType == entry) win = true;
+        }
+    }else if (spin == bet.betNumber) win = true;
 
     console.log(win);
+    if (win){ 
+        let winAmount = (betAmount * bet.payout) + betAmount;
+        resultDiv.innerHTML += `<br> You win! Payout: ${winAmount}`; 
+        startMoney += winAmount;
+    }else {
+        resultDiv.innerHTML += "<br> You lose!";
+    }
+
+    moneyDiv.innerHTML = `Your current money is ${startMoney}`;
 
     
 }
